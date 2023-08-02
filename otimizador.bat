@@ -11,43 +11,38 @@ time /t
 date /t  
 
 echo =============================================================================
-echo * 1  - Otimizar                                            .!:              *
-echo * 2  - Atualizar Programas                             !#########           *
-echo * 3  - Reparar                                        #!!!!!#####!          *
-echo * 4  - Atualizar Windows                             #########:.:.          *
-echo * 5  - Verificacao de Virus                          :@@#@@@@@!:.::::       *
-echo * 6  - Desfragmentar Disco Local                     :###@@@@@       !@:    *
-echo * 7  - Checar Memoria RAM                            !##@@@@@#              *
-echo * 8  - Checar Processador                              #####!!!             *
-echo * 99 - SAIR                                           ##########:           *
-echo *                                     .......!!:::!############.            *
-echo *                            ......:::!!!:::::!!::###############           *
-echo *                 .@# .:!!##!!###.........::::!:!!!##########!####          *
-echo *               :!##:###@@@:...............:::::!#!!####!##########         *
-echo *                .@@@:  .................::::::############@###@###         *
-echo *                 :##  ...................::..#@###@@##@@@@#@#@###          *
-echo *                       ..................:..::!#@@@@@@@@@@@@@#@!           *
-echo *                         ....:::::...:.::::::!!##@@@@@@@@@@@!              *
-echo *                              .::::!#!!!!!!!!!######.                      *
-echo *                                  .!#       ##                             *
-echo *                                   ::      .!!:      .                     *
-echo *                                   :::       :::::::::                     *
-echo *                                    .:!:..:!!:                             *
-echo *                                       .!!                   @Mr8Wrench    *
+echo *         ######                                                            *
+echo *         #     #   ##   ##### ###### #       ####   ####  #    #           *
+echo *         #     #  #  #    #   #      #      #      #    # ##   #           *
+echo *         ######  #    #   #   #####  #       ####  #    # # #  #           *
+echo *         #       ######   #   #      #           # #    # #  # #           *
+echo *         #       #    #   #   #      #      #    # #    # #   ##           *
+echo *         #       #    #   #   ###### ######  ####   ####  #    #           *
+echo *___________________________________________________________________________*
+echo *                                                                           *
+echo * [1] - Otimizar                                                            *
+echo * [2] - Atualizar Programas                                                 *
+echo * [3] - Reparar                                                             *
+echo * [4] - Atualizar Windows                                                   *
+echo * [5] - Verificacao de Virus                                                *
+echo * [6] - Desfragmentar Disco Local                                           *
+echo * [7] - Checar Memoria RAM                                                  *
+echo * [8] - Checar Processador                                                  *
+echo * [0] - SAIR                                                 by @Mr8Wrench  *
 echo =============================================================================
 echo.
 echo.
 
 set /p op= Digite sua opcao:
-if %op% equ 1  goto 1
-if %op% equ 2  goto 2
-if %op% equ 3  goto 3
-if %op% equ 4  goto 4
-if %op% equ 5  goto 5
-if %op% equ 6  goto 6
-if %op% equ 7  goto 7
-if %op% equ 8  goto 8
-if %op% equ 99 goto 99(
+if %op% equ 1 goto 1
+if %op% equ 2 goto 2
+if %op% equ 3 goto 3
+if %op% equ 4 goto 4
+if %op% equ 5 goto 5
+if %op% equ 6 goto 6
+if %op% equ 7 goto 7
+if %op% equ 8 goto 8
+if %op% equ 0 goto 0(
 )else(
 	cls
 	goto menu
@@ -126,9 +121,20 @@ goto menu
 	echo.
 	echo Para concluir a atualizacao por favor reinicie o computador!!!!
 	echo.
-	pause
-	cls
-goto menu
+	set /p "rein=Deseja reiniciar (Y/n)?"
+
+	if /i "%rein%"=="Y" (
+		shutdown /r /t 0
+	) else if /i "%rein%"=="n" (
+		goto menu
+	) else (
+		echo Valor invalido! Por favor, digite apenas "Y" ou "n".
+		pause
+		cls
+		goto :4
+	)
+
+
 
 :5
 	cls
@@ -194,5 +200,5 @@ goto menu
 	cls
 goto menu
 	
-:99
+:0
 	exit
